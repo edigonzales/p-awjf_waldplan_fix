@@ -1,0 +1,154 @@
+INSERT INTO 
+    awjf_waldplan_v1_fix.waldpln_stndskrte_waldplan_bestandeskarte
+    (
+        geometrie,
+        id_wp,
+        fid_amtei,
+        fid_fk,
+        fid_fr,
+        wirt_zone,
+        gem_bfs,
+        fid_we,
+        gb_flaeche,
+        we_text,
+        fid_eigcod,
+        fid_eig,
+        fid_prod,
+        wpnr,
+        wptyp,
+        betriebsteil,
+        fid_abt,
+        bstnr,
+        bsttyp,
+        wpinfo,
+        bemerkung,
+        flae_gis,
+        zeitstand,
+        beschrift,
+        x_beschr,
+        y_beschr,
+        objnummer,
+        weidewald,
+        gb_gem_bfs,
+        astatus
+    )
+SELECT
+    --reason(st_isvaliddetail(geometrie)),
+    st_reduceprecision((ST_Dump(ST_CollectionExtract(st_makevalid(geometrie),3))).geom, 0.001)  AS geometrie,
+    id_wp,
+    fid_amtei,
+    fid_fk,
+    fid_fr,
+    wirt_zone,
+    gem_bfs,
+    fid_we,
+    gb_flaeche,
+    we_text,
+    fid_eigcod,
+    fid_eig,
+    fid_prod,
+    wpnr,
+    wptyp,
+    betriebsteil,
+    fid_abt,
+    bstnr,
+    bsttyp,
+    wpinfo,
+    bemerkung,
+    flae_gis,
+    zeitstand,
+    beschrift,
+    x_beschr,
+    y_beschr,
+    objnummer,
+    weidewald,
+    gb_gem_bfs,
+    astatus
+FROM 
+    awjf_waldplan_v1.waldpln_stndskrte_waldplan_bestandeskarte 
+WHERE
+    st_isvalid(geometrie) = FALSE
+;
+
+
+
+
+INSERT INTO 
+    awjf_waldplan_v1_fix.waldpln_stndskrte_waldplan_bestandeskarte
+    (
+        geometrie,
+        id_wp,
+        fid_amtei,
+        fid_fk,
+        fid_fr,
+        wirt_zone,
+        gem_bfs,
+        fid_we,
+        gb_flaeche,
+        we_text,
+        fid_eigcod,
+        fid_eig,
+        fid_prod,
+        wpnr,
+        wptyp,
+        betriebsteil,
+        fid_abt,
+        bstnr,
+        bsttyp,
+        wpinfo,
+        bemerkung,
+        flae_gis,
+        zeitstand,
+        beschrift,
+        x_beschr,
+        y_beschr,
+        objnummer,
+        weidewald,
+        gb_gem_bfs,
+        astatus
+    )
+SELECT
+    --reason(st_isvaliddetail(geometrie)),
+    st_reduceprecision(geometrie, 0.001)  AS geometrie,
+    id_wp,
+    fid_amtei,
+    fid_fk,
+    fid_fr,
+    wirt_zone,
+    gem_bfs,
+    fid_we,
+    gb_flaeche,
+    we_text,
+    fid_eigcod,
+    fid_eig,
+    fid_prod,
+    wpnr,
+    wptyp,
+    betriebsteil,
+    fid_abt,
+    bstnr,
+    bsttyp,
+    wpinfo,
+    bemerkung,
+    flae_gis,
+    zeitstand,
+    beschrift,
+    x_beschr,
+    y_beschr,
+    objnummer,
+    weidewald,
+    gb_gem_bfs,
+    astatus
+FROM 
+    awjf_waldplan_v1.waldpln_stndskrte_waldplan_bestandeskarte 
+WHERE
+    st_isvalid(geometrie) = TRUE
+;
+
+
+DELETE FROM 
+    awjf_waldplan_v1_fix.waldpln_stndskrte_waldplan_bestandeskarte
+WHERE   
+    ST_IsEmpty(geometrie) 
+;
+
