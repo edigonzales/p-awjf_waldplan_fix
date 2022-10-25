@@ -34,7 +34,8 @@ INSERT INTO
     )
 SELECT
     --reason(st_isvaliddetail(geometrie)),
-    st_reduceprecision((ST_Dump(ST_CollectionExtract(st_makevalid(geometrie),3))).geom, 0.001)  AS geometrie,
+    -- Zweites ST_Dump wird benötig, weil ST_ReducePrecision wieder MultiPolygone erzeuge kann.
+    (ST_Dump(st_reduceprecision((ST_Dump(ST_CollectionExtract(st_makevalid(geometrie),3))).geom, 0.001))).geom  AS geometrie,
     id_wp,
     fid_amtei,
     fid_fk,
@@ -109,7 +110,7 @@ INSERT INTO
     )
 SELECT
     --reason(st_isvaliddetail(geometrie)),
-    st_reduceprecision(geometrie, 0.001)  AS geometrie,
+    (ST_Dump(ST_ReducePrecision(geometrie, 0.001))).geom  AS geometrie,
     id_wp,
     fid_amtei,
     fid_fk,
@@ -151,4 +152,3 @@ DELETE FROM
 WHERE   
     ST_IsEmpty(geometrie) 
 ;
-
