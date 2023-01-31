@@ -30,7 +30,8 @@ INSERT INTO
         objnummer,
         weidewald,
         gb_gem_bfs,
-        astatus
+        astatus,
+        wap_vollstaendig
     )
 SELECT
     --reason(st_isvaliddetail(geometrie)),
@@ -64,7 +65,8 @@ SELECT
     objnummer,
     weidewald,
     gb_gem_bfs,
-    astatus
+    astatus,
+    wap_vollstaendig
 FROM 
     awjf_waldplan_v1.waldpln_stndskrte_waldplan_bestandeskarte 
 WHERE
@@ -106,7 +108,8 @@ INSERT INTO
         objnummer,
         weidewald,
         gb_gem_bfs,
-        astatus
+        astatus,
+        wap_vollstaendig
     )
 SELECT
     --reason(st_isvaliddetail(geometrie)),
@@ -139,7 +142,8 @@ SELECT
     objnummer,
     weidewald,
     gb_gem_bfs,
-    astatus
+    astatus,
+    wap_vollstaendig
 FROM 
     awjf_waldplan_v1.waldpln_stndskrte_waldplan_bestandeskarte 
 WHERE

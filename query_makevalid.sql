@@ -91,7 +91,8 @@ SELECT
     objnummer,
     weidewald,
     gb_gem_bfs,
-    astatus
+    astatus,
+    wap_vollstaendig
 FROM 
     awjf_waldplan_v1_fix.waldpln_stndskrte_waldplan_bestandeskarte AS wald
     INNER JOIN awjf_waldplan_v1_fix.polys_point AS polys 
@@ -135,7 +136,8 @@ SELECT
     objnummer,
     weidewald,
     gb_gem_bfs,
-    astatus
+    astatus,
+    wap_vollstaendig
 FROM 
 (
     SELECT 
@@ -182,7 +184,8 @@ INSERT INTO awjf_waldplan_v1_definitiv.waldpln_stndskrte_waldplan_bestandeskarte
     objnummer,
     weidewald,
     gb_gem_bfs,
-    astatus
+    astatus,
+    wap_vollstaendig
 )
 SELECT 
     geometrie,
@@ -214,7 +217,8 @@ SELECT
     objnummer,
     weidewald,
     gb_gem_bfs,
-    astatus
+    astatus,
+    wap_vollstaendig
 FROM 
     awjf_waldplan_v1_fix.polys_join 
 ;
